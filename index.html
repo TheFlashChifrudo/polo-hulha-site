@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polo Hulha — Honrando nossa tradição, gerando o futuro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    /* Novas cores baseadas na sua Logo (Cobre/Bronze e Preto) */
+    --ph-copper:#C57A36; 
+    --ph-copper-dark:#9c5e27;
+    --ph-copper-light:rgba(197,122,54,0.15);
+    --ph-black:#111111;
+    --bg:#fff;
+    --bg2:#f7f5f2;
+    --bg3:#f0ece7;
+    --text:#1a1a1a;
+    --text2:#555;
+    --text3:#888;
+    --border:rgba(0,0,0,0.1);
+  }
+  @media(prefers-color-scheme:dark){
+    :root{
+      --bg:#121212;
+      --bg2:#1c1c1c;
+      --bg3:#242424;
+      --text:#f0f0f0;
+      --text2:#aaa;
+      --text3:#666;
+      --border:rgba(255,255,255,0.1);
+    }
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.6}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+  .logo{display:flex;align-items:center;text-decoration:none; transition: transform 0.3s;}
+  .logo:hover { transform: scale(1.05); }
+  .nav-links{display:flex;gap:1.5rem}
+  .nav-links a{font-size:13px;color:var(--text2);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--ph-copper)}
+  .nav-cta{font-size:13px;font-weight:600;padding:8px 18px;background:var(--ph-copper);color:#fff;border:none;border-radius:7px;cursor:pointer;text-decoration:none;transition:all .3s}
+  .nav-cta:hover{background:var(--ph-copper-dark); transform: translateY(-2px); box-shadow: 0 4px 10px var(--ph-copper-light);}
+
+  /* HERO */
+  .hero{padding:6rem 2rem 5rem;text-align:center;background:linear-gradient(160deg,#0a0a0a 0%,#26150b 45%,#111 100%);position:relative;overflow:hidden}
+  .hero-particles{position:absolute;inset:0;pointer-events:none}
+  .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--ph-copper-light);border:1px solid rgba(197,122,54,0.4);color:#eeb483;font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.4px; animation: floatY 3s ease-in-out infinite;}
+  .hero h1{font-size:clamp(2.2rem,6vw,3.8rem);font-weight:900;color:#fff;line-height:1.08;margin-bottom:1.1rem}
+  .hero h1 em{font-style:normal;color:var(--ph-copper)}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.7);max-width:580px;margin:0 auto 2.5rem;line-height:1.75}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  
+  /* BOTAO PULSANTE */
+  @keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(197,122,54, 0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(197,122,54, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(197,122,54, 0); }
+  }
+  .btn-primary{padding:14px 28px;background:var(--ph-copper);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s; animation: pulseGlow 2s infinite;}
+  .btn-primary:hover{background:var(--ph-copper-dark); transform: scale(1.05);}
+  .btn-outline{padding:13px 26px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s}
+  .btn-outline:hover{border-color:var(--ph-copper);background:var(--ph-copper-light); transform: scale(1.05);}
+
+  /* SECTIONS */
+  .section{padding:4.5rem 2rem}
+  .section-alt{background:var(--bg2)}
+  .section-alt2{background:var(--bg3)}
+  .inner{max-width:920px;margin:0 auto}
+  .section-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--ph-copper);text-transform:uppercase;margin-bottom:.5rem}
+  .section-title{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:700;color:var(--text);margin-bottom:1rem;line-height:1.2}
+  .section-body{font-size:15px;color:var(--text2);line-height:1.8;max-width:660px}
+
+  /* CARDS E ANIMAÇÕES HOVER */
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:2rem}
+  .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:2rem}
+  .card, .team-card, .stat-box { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; }
+  .card:hover, .team-card:hover, .stat-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); border-color: var(--ph-copper); }
+  
+  .card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+  .card-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:.85rem;font-size:20px; background:var(--ph-copper-light); color:var(--ph-copper);}
+  .card h3{font-size:14px;font-weight:600;margin-bottom:.5rem}
+  .card p{font-size:13px;color:var(--text2);line-height:1.6}
+
+  /* VALUES */
+  .values-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem}
+  .val-pill{display:flex;align-items:center;gap:6px;background:var(--ph-copper-light);border:1px solid rgba(197,122,54,0.3);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:500;color:var(--ph-copper); transition: all 0.3s;}
+  .val-pill:hover{background:var(--ph-copper); color:#fff; transform: scale(1.05);}
+
+  /* TEAM */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:2rem}
+  .team-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center}
+  .avatar{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;margin:0 auto .85rem; background:var(--ph-copper-light); color:var(--ph-copper);}
+  .team-card h4{font-size:15px;font-weight:600;margin-bottom:.25rem}
+  .team-role{font-size:12px;color:var(--ph-copper);font-weight:600;margin-bottom:.5rem}
+  .team-card p{font-size:12px;color:var(--text2);line-height:1.55}
+
+  /* STATS */
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:2rem}
+  .stat-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1.25rem;text-align:center}
+  .stat-num{font-size:1.9rem;font-weight:800;color:var(--ph-copper);line-height:1}
+  .stat-label{font-size:12px;color:var(--text2);margin-top:.4rem;line-height:1.4}
+
+  /* AUDIENCE */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+  .chip{display:inline-flex;align-items:center;gap:5px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--text2); transition: all 0.3s;}
+  .chip:hover{border-color:var(--ph-copper); color:var(--text);}
+  .chip i{color:var(--ph-copper);font-size:14px}
+
+  /* TIMELINE */
+  .timeline{margin-top:2rem;position:relative;padding-left:1.5rem}
+  .timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--border);border-radius:2px}
+  .tl-item{position:relative;margin-bottom:1.5rem;padding-left:1.25rem; transition: transform 0.3s;}
+  .tl-item:hover{transform: translateX(5px);}
+  .tl-dot{position:absolute;left:-1.57rem;top:4px;width:12px;height:12px;border-radius:50%;background:var(--ph-copper);border:2px solid var(--bg)}
+  .tl-date{font-size:11px;font-weight:700;color:var(--ph-copper);letter-spacing:.5px;margin-bottom:.25rem}
+  .tl-title{font-size:14px;font-weight:600;margin-bottom:.2rem}
+  .tl-body{font-size:13px;color:var(--text2);line-height:1.5}
+
+  /* SWOT */
+  .swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}
+  .swot-card{border-radius:11px;padding:1.25rem; transition: transform 0.3s;}
+  .swot-card:hover{transform: scale(1.02);}
+  .swot-card h4{font-size:13px;font-weight:700;letter-spacing:.5px;margin-bottom:.75rem}
+  .swot-card ul{list-style:none;padding:0}
+  .swot-card ul li{font-size:13px;line-height:1.6;padding:2px 0;display:flex;gap:6px}
+  .swot-card ul li::before{content:'›';font-weight:700;flex-shrink:0}
+  .sw-s{background:#eef8f0;color:#1a5c2a}.sw-s h4,.sw-s li::before{color:#1a5c2a}
+  .sw-w{background:#fdf3e0;color:#7a4800}.sw-w h4,.sw-w li::before{color:#7a4800}
+  .sw-o{background:#e8f0fe;color:#1a3a8f}.sw-o h4,.sw-o li::before{color:#1a3a8f}
+  .sw-t{background:#fdecea;color:#8f1a1a}.sw-t h4,.sw-t li::before{color:#8f1a1a}
+
+  /* CTA */
+  .cta-section{background:linear-gradient(135deg,#0a0a0a,#26150b);padding:5rem 2rem;text-align:center}
+  .cta-section h2{color:#fff;font-size:2rem;font-weight:800;margin-bottom:.75rem}
+  .cta-section p{color:rgba(255,255,255,0.7);margin-bottom:2.5rem;font-size:15px;max-width:500px;margin-left:auto;margin-right:auto}
+
+  /* FOOTER */
+  footer{padding:2rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+  .footer-copy{font-size:12px;color:var(--text3)}
+  .footer-slogan{font-size:12px;color:var(--ph-copper);font-weight:500;font-style:italic}
+
+  /* MODAL DE CONTATO (Aba Embutida) */
+  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; align-items: center; justify-content: center; backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease; }
+  .modal.active { display: flex; opacity: 1; }
+  .modal-content { background: var(--bg); padding: 2.5rem; border-radius: 12px; width: 90%; max-width: 450px; position: relative; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 25px 50px rgba(0,0,0,0.5); border: 2px solid var(--ph-copper); }
+  .modal.active .modal-content { transform: translateY(0) scale(1); }
+  .close-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: var(--text2); transition: color 0.2s; font-weight: 700; }
+  .close-modal:hover { color: var(--ph-copper); }
+  .form-group { margin-bottom: 1rem; text-align: left; }
+  .form-group label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--text); }
+  .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg2); color: var(--text); font-family: 'Inter', sans-serif; transition: all 0.3s; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--ph-copper); outline: none; box-shadow: 0 0 0 3px var(--ph-copper-light); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .btn-submit { width: 100%; padding: 14px; background: var(--ph-copper); color: #fff; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px; }
+  .btn-submit:hover { background: var(--ph-copper-dark); transform: scale(1.03); }
+
+  /* ANIMATIONS SCROLL */
+  .fade-in{opacity:0;transform:translateY(30px) scale(0.95);transition:opacity .8s ease,transform .8s ease}
+  .fade-in.visible{opacity:1;transform:translateY(0) scale(1)}
+  .particle{position:absolute;border-radius:50%;background:var(--ph-copper-light);animation:pfloat linear infinite;pointer-events:none}
+  @keyframes pfloat{0%{transform:translateY(0) scale(1);opacity:.8}60%{opacity:.4}100%{transform:translateY(-200px) scale(.4);opacity:0}}
+  @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-5px)}100%{transform:translateY(0)}}
+
+  /* RESPONSIVE */
+  @media(max-width:640px){
+    .nav-links{display:none}
+    .swot-grid{grid-template-columns:1fr}
+    nav{padding:.85rem 1.25rem}
+    .section{padding:3rem 1.25rem}
+    .hero{padding:4rem 1.25rem 3.5rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">
+    <img src="src/images/logo.png" alt="Polo Hulha" style="height: 50px; border-radius: 4px; object-fit: contain;">
+  </a>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#equipe">Equipe</a>
+    <a href="#impacto">Impacto</a>
+  </div>
+  <a class="nav-cta btn-open-modal" href="#contato">Entre em contato</a>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-tag fade-in visible">📍 Butiá, RS — Nascemos aqui para crescer aqui</div>
+  <h1 class="fade-in visible" style="transition-delay: 0.1s;">Da força da <em>hulha</em>,<br>nasce o futuro</h1>
+  <p class="hero-sub fade-in visible" style="transition-delay: 0.2s;">Uma empresa social que transforma o potencial bruto das pessoas em oportunidades reais — por meio da educação, qualificação e inclusão digital.</p>
+  <div class="hero-btns fade-in visible" style="transition-delay: 0.3s;">
+    <a class="btn-primary" href="#servicos">Ver nossos cursos</a>
+    <a class="btn-outline btn-open-modal" href="#contato">Falar com a equipe</a>
+  </div>
+</section>
+
+<section class="section" id="sobre">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">Nossa história</p>
+      <h2 class="section-title">Por que somos Polo Hulha?</h2>
+      <p class="section-body">A Hulha é o carvão betuminoso — a maior riqueza que a nossa terra guarda. Para nós, vai muito além: representa o suor, a força e a dedicação de cada mineiro que desceu às profundezas da terra para iluminar o Brasil.<br><br>
+      O <strong>Polo</strong> é o ponto de encontro. Onde as pessoas se reúnem, as ideias fervem e as novidades acontecem. Juntos, os dois nomes mostram que a tecnologia não precisa apagar o passado — ela usa a base forte que os mineiros nos deixaram para ir mais longe.</p>
+      <div class="values-row">
+        <span class="val-pill"><i class="ti ti-shield-check"></i> Ética</span>
+        <span class="val-pill"><i class="ti ti-eye"></i> Transparência</span>
+        <span class="val-pill"><i class="ti ti-bulb"></i> Inovação</span>
+        <span class="val-pill"><i class="ti ti-users"></i> Inclusão Social</span>
+        <span class="val-pill"><i class="ti ti-heart-handshake"></i> Comunidade</span>
+      </div>
+    </div>
+    <div class="grid-3">
+      <div class="card fade-in">
+        <div class="card-icon"><i class="ti ti-target"></i></div>
+        <h3>Missão</h3>
+        <p>Promover a transformação social por meio da educação, qualificação profissional e conexão com oportunidades de emprego e empreendedorismo.</p>
+      </div>
+      <div class="card fade-in" style="transition-delay: 0.1s;">
+        <div class="card-icon"><i class="ti ti-telescope"></i></div>
+        <h3>Visão</h3>
+        <p>Ser referência regional em inclusão social, capacitação profissional e desenvolvimento de talentos, contribuindo para uma sociedade mais justa.</p>
+      </div>
+      <div class="card fade-in" style="transition-delay: 0.2s;">
+        <div class="card-icon"><i class="ti ti-leaf"></i></div>
+        <h3>Slogan</h3>
+        <p><em>"Honrando nossa tradição, gerando o futuro."</em> — usar a base forte da nossa terra para criar o futuro com conhecimento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="servicos">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">O que oferecemos</p>
+      <h2 class="section-title">Cursos e serviços</h2>
+      <p class="section-body">Formamos pessoas para o mercado de trabalho com cursos práticos, atendimento humanizado e suporte real às famílias da região.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card fade-in">
+        <div class="card-icon"><i class="ti ti-device-laptop" style="font-size:22px"></i></div>
+        <h3>Informática e Inclusão Digital</h3>
+        <p>Computação básica, Word, Excel e preparação para uso do computador no dia a dia profissional.</p>
+      </div>
+      <div class="card fade-in" style="transition-delay: 0.1s;">
+        <div class="card-icon"><i class="ti ti-file-invoice" style="font-size:22px"></i></div>
+        <h3>Rotinas Administrativas</h3>
+        <p>Caixa, notas fiscais, atendimento ao cliente e burocracia simplificada para o dia a dia empresarial.</p>
+      </div>
+      <div class="card fade-in" style="transition-delay: 0.2s;">
+        <div class="card-icon"><i class="ti ti-briefcase" style="font-size:22px"></i></div>
+        <h3>Preparação para o Mercado</h3>
+        <p>Currículo, postura profissional, entrevistas e busca ativa de emprego com acompanhamento real.</p>
+      </div>
+      <div class="card fade-in" style="transition-delay: 0.3s;">
+        <div class="card-icon"><i class="ti ti-building-store" style="font-size:22px"></i></div>
+        <h3>Iniciação ao Empreender</h3>
+        <p>Apoio para pequenos negócios locais darem seus primeiros passos com segurança e planejamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="equipe">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">Quem somos</p>
+      <h2 class="section-title">Nossa equipe</h2>
+      <p class="section-body">Quatro sócios com funções complementares, unidos pelo propósito de transformar Butiá e a região carbonífera.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card fade-in">
+        <div class="avatar">G</div>
+        <h4>Gabriela</h4>
+        <div class="team-role">Diretora Geral</div>
+        <p>Define estratégias, relações institucionais e garante que comunidade e empresas trabalhem juntas em prol do projeto.</p>
+      </div>
+      <div class="team-card fade-in" style="transition-delay: 0.1s;">
+        <div class="avatar">N</div>
+        <h4>Nicollas</h4>
+        <div class="team-role">Diretor Financeiro</div>
+        <p>Cuida de todo o dinheiro do projeto — controle do caixa, balanços contábeis e garante a saúde da empresa.</p>
+      </div>
+      <div class="team-card fade-in" style="transition-delay: 0.2s;">
+        <div class="avatar">C</div>
+        <h4>Caroline</h4>
+        <div class="team-role">Diretora Educacional</div>
+        <p>Organiza o calendário de cursos, acompanha professores de perto e cuida do atendimento aos alunos.</p>
+      </div>
+      <div class="team-card fade-in" style="transition-delay: 0.3s;">
+        <div class="avatar">D</div>
+        <h4>Dhiuly</h4>
+        <div class="team-role">Empregabilidade</div>
+        <p>Busca parcerias com empresas, organiza o banco de talentos e garante que os alunos formados consigam emprego.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="impacto">
+  <div class="inner">
+    <div class="fade-in">
+      <p class="section-label">Números que importam</p>
+      <h2 class="section-title">Impacto social esperado</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-box fade-in">
+        <div class="stat-num">R$180k</div>
+        <div class="stat-label">Capital social inicial</div>
+      </div>
+      <div class="stat-box fade-in" style="transition-delay: 0.1s;">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Cursos profissionalizantes</div>
+      </div>
+      <div class="stat-box fade-in" style="transition-delay: 0.2s;">
+        <div class="stat-num">R$0</div>
+        <div class="stat-label">Custo para vulnerabilidade</div>
+      </div>
+      <div class="stat-box fade-in" style="transition-delay: 0.3s;">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Municípios atendidos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="contato-sec">
+  <div class="inner">
+    <h2 class="fade-in">Faça parte do movimento</h2>
+    <p class="fade-in">Seja como aluno, empresa parceira ou apoiador — venha construir o futuro de Butiá conosco.</p>
+    <div class="hero-btns fade-in">
+      <button class="btn-primary btn-open-modal">✉ Preencher Formulário de Contato</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="src/images/logo.png" alt="PH Logo" style="height: 25px; object-fit: contain;">
+    <span class="footer-copy">© 2026 Polo Hulha — Butiá, RS</span>
+  </div>
+  <span class="footer-slogan">"Honrando nossa tradição, gerando o futuro."</span>
+</footer>
+
+<div class="modal" id="modalContato">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2 style="margin-bottom: 5px; color: var(--text);">Fale Conosco</h2>
+    <p style="font-size: 13px; color: var(--text2); margin-bottom: 20px;">Envie seus dados e nossa equipe entrará em contato.</p>
+    
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSfxSGboqpu-vu0CYLx7ddA8ZcJAh2_S-20aVslOPufhVMgE1g/formResponse" method="POST" target="hidden_iframe" onsubmit="formEnviado()">
+      
+      <div class="form-group">
+        <label>Nome Completo</label>
+        <input type="text" name="entry.123456789" required placeholder="Digite seu nome">
+      </div>
+      
+      <div class="form-group">
+        <label>E-mail ou Telefone</label>
+        <input type="text" name="entry.987654321" required placeholder="Seu contato">
+      </div>
+      
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea name="entry.112233445" required placeholder="Como podemos ajudar?"></textarea>
+      </div>
+      
+      <button type="submit" class="btn-submit">Enviar para o Polo Hulha</button>
+    </form>
+    
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    
+    <div id="msgSucesso" style="display:none; margin-top: 15px; padding: 12px; background: #eef8f0; border: 1px solid #1a5c2a; color: #1a5c2a; border-radius: 8px; font-size: 13px; text-align: center; font-weight: 600;">
+      ✨ Dados enviados com sucesso! Logo retornaremos o contato.
+    </div>
+  </div>
+</div>
+
+<script>
+// Partículas do hero
+function spawnParticles(){
+  const c=document.getElementById('particles');
+  if(!c)return;
+  for(let i=0;i<25;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const s=Math.random()*15+5;
+    p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:${Math.random()*20}px;animation-duration:${(Math.random()*3+5).toFixed(1)}s;animation-delay:${(Math.random()*3).toFixed(1)}s`;
+    c.appendChild(p);
+  }
+}
+spawnParticles();
+
+// Fade in ao scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// SCRIPT DO MODAL E FORMULÁRIO (Aba de Contato)
+const modal = document.getElementById('modalContato');
+const btnsModal = document.querySelectorAll('.btn-open-modal');
+const spanClose = document.getElementById('closeModal');
+
+btnsModal.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('active'); // Abre a aba
+  });
+});
+
+spanClose.addEventListener('click', () => {
+  modal.classList.remove('active'); // Fecha no "X"
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.classList.remove('active'); // Fecha clicando fora
+  }
+});
+
+// Função acionada ao enviar o formulário
+function formEnviado() {
+  const msgDiv = document.getElementById('msgSucesso');
+  msgDiv.style.display = 'block'; // Mostra msg verde de sucesso
+  
+  setTimeout(() => {
+    modal.classList.remove('active'); // Fecha a janela depois de 4s
+    msgDiv.style.display = 'none';
+    document.querySelector('form').reset(); // Limpa os campos
+  }, 4000);
+}
+</script>
+</body>
+</html>
